@@ -17,16 +17,16 @@ flcombs_conn = ['up','dn','IS','IV']
 Gamma_bases = {'QuaHoG':'gammas_QuaHoG' , 'QUDA_UKQCD':'gammas_QUDA_UKQCD', 'QUDA_DeGrand':'gammas_QUDA_DeGrand_Rossi'}
 
 # Supported operators
-supported_operators = ('axial-vec')
+supported_operators = ('axial-vec' , 'scalar')
 
 # Projector tags for each basis ( Convention: (x,y,xyz) )
-projector_tags3pt = { 'axial-vec': {'QuaHoG_polarized':('P4','P5','P3')} }
+projector_tags3pt = { 'axial-vec': {'QuaHoG_polarized':('P4','P5','P3')} , 'scalar': {'QuaHoG_unpolarized':('P0',)} }
 
 # Insertion current tags for each operator and basis ( Convention: (x,y,z) ) *** Assume that the three-point function is in the twisted basis in QuaHoG basis!!! ***
-operator_tags3pt = { 'axial-vec': {'QuaHoG':('=loc:g5gx=','=loc:g5gy=','=loc:g5gz=')} }
+operator_tags3pt = { 'axial-vec': {'QuaHoG':('=loc:g5gx=','=loc:g5gy=','=loc:g5gz=')} , 'scalar': {'QuaHoG':('=loc:g5=',)} }
 
 # This helps flip the sign for the scalar and the tensor charges if we are in the twisted basis
-optr_sign3pt = {'QuaHoG': {'axial-vec': +1.0 } }
+optr_sign3pt = {'QuaHoG': {'axial-vec': +1.0 , 'scalar': -1.0}  }
 
 #---------------------------------------------------------
 
@@ -47,6 +47,8 @@ def get_3ptproj_tag(basis_tag,optr_tag):
     proj_pol = ''
     if(optr_tag == 'axial-vec'):
         proj_pol = 'polarized'
+    elif(optr_tag == 'scalar'):
+        proj_pol = 'unpolarized'
     else:
         print( 'get_3ptproj_tag: Please add the operator %s inside get_3ptproj_tag!' % (optr_tag) ) 
         
