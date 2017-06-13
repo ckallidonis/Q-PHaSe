@@ -26,8 +26,29 @@ def extractMatrixElement(thrp_raw,thrpInfo,Qsq,basis_tag,optr_tag):
         msq = Qsq.index(0)
         proj_list = get_3ptproj_tag(basis_tag,optr_tag)
         plist = projector_tags3pt[optr_tag][proj_list]
-        thrp = extract_axial_charge(thrp_raw,thrpInfo,curr_lst,plist,csgn) # (momentum-dependence not required here as we are dealing with the axial charge)    
+        thrp = extract_axial_charge(thrp_raw,thrpInfo,curr_lst,plist,csgn) # (momentum-dependence not required here as we are dealing with the axial charge)
+    elif(optr_tag == 'scalar'):
+        msq = Qsq.index(0)
+        proj_list = get_3ptproj_tag(basis_tag,optr_tag)
+        plist = projector_tags3pt[optr_tag][proj_list]
+        thrp = extract_scalar_charge(thrp_raw,thrpInfo,curr_lst,plist,csgn)
+    
         
+    return thrp
+#---------------------------------------------------------------------------------------
+
+
+# Function for extracting the scalar charge
+def extract_scalar_charge(thrp_raw,thrpInfo,curr_lst,plist,csgn,msq=0):
+
+    thrp = {}
+    for flav in flav_list3pt:
+        thrp[flav] = thrp_raw[msq][(curr_lst[0],plist[0],flav)]
+
+
+    thrp['IS'] = thrp['up'] + csgn * thrp['dn']  # Isoscalar combination
+    thrp['IV'] = thrp['up'] - csgn * thrp['dn']  # Isovector combination
+    
     return thrp
 #---------------------------------------------------------------------------------------
 
