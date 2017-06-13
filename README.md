@@ -1,5 +1,5 @@
 # Q-PHase 
-**Version: v0.0.0**
+**Version: v0.0.1**
 
 ### QCD Package for Hadron Structure measurements.
 

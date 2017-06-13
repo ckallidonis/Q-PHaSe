@@ -2,3 +2,5 @@
 #*
 files/*
 outfiles/*
+include/*~
+include/#*
