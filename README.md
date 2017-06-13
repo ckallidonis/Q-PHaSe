@@ -1,9 +1,12 @@
 # Q-PHase 
-**Version: v0.0.7**
+**Version: v1.0.0**
 
 ### QCD Package for Hadron Structure measurements.
 
 Python modules for hadronic matrix element calculations from Lattice QCD.
+
+Includes python scripts for the calculation of:
+ * Nucleon Axial charge
 
 ## Author
 **Christos Kallidonis**
