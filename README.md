@@ -17,6 +17,4 @@ Python modules for hadronic matrix element calculations from Lattice QCD.
 ## Author
 **Christos Kallidonis**
 
-E-mail: c.kallidonis@cyi.ac.cy
-
-Web: [christoskallidonis.com](http://christoskallidonis.com)
+* Web: [christoskallidonis.com](http://christoskallidonis.com)
